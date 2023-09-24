@@ -1,0 +1,34 @@
+#include <Servo.h>
+
+const int servoPin = 9;
+const int sensorPin = A0;
+
+// Create servo object to control a servo
+Servo myservo;
+
+// Variable to store the servo position
+int pos = 0;
+
+void setup() {
+  
+  // Attaches the servo on pin 9 to the servo object
+  myservo.attach(servoPin);
+  
+}
+
+void loop() {
+  
+  // Get our sensor value
+  int sensorVal = analogRead(sensorPin);
+
+  // Map ranges from range of possible sensor values to
+  // range of possible servo positions
+  int pos = map(sensorVal, 0, 1023, 0, 180);
+
+  // Set servo position
+  myservo.write(pos);
+  
+  // Wait 15 milliseconds
+  delay(15);
+ 
+}

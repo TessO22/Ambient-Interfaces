@@ -1,0 +1,25 @@
+int motorPin = 9;
+int sensorPin = A0;
+int speed = 10;
+
+void setup() {
+  pinMode(motorPin, OUTPUT);
+  
+  pinMode(LED_BUILTIN, OUTPUT);
+  
+  for(int i = 0; i < 4; i++){
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(1000);                      
+    digitalWrite(LED_BUILTIN, LOW);   
+    delay(500);                 
+  }
+}
+
+void loop() {
+
+  int sensorVal = analogRead(sensorPin);
+
+  speed = map(sensorVal, 0, 1023, 0, 255);
+  analogWrite(motorPin, speed);
+ 
+}

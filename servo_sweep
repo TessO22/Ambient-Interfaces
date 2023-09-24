@@ -1,0 +1,30 @@
+#include <Servo.h>
+
+int servoPin = 3;
+//int sensorPin = A0;
+
+Servo myservo;
+
+int pos = 0;
+
+void setup() {
+  myservo.attach(servoPin);
+}
+
+void loop() {
+  //int sensorVal = analogRead(sensorPin);
+  
+  // sweep through all possible positions
+  for (pos = 0; pos <= 180; pos++) {
+    myservo.write(pos);
+    delay(15);
+  }
+
+  // come back the other way
+  for (pos = 180; pos >= 0; pos--) {
+    myservo.write(pos);
+    delay(15);
+  }
+
+
+}
